@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="ui-preview.png" alt="Magic Eraser SDK UI Mockup" width="100%"/>
+  <img src="ui-preview-v2.png" alt="Magic Eraser SDK UI Mockup" width="100%"/>
   <br><br>
   
   <img src="https://img.shields.io/badge/Platform-Android-green?style=for-the-badge&logo=android" alt="Android" />
@@ -19,7 +19,7 @@ Are you currently using cloud APIs like Remove.bg, Photoroom, or ClipDrop to pow
 The **Magic Eraser SDK** is a premium, 100% on-device Android library that brings desktop-grade AI erasing to your mobile app for a flat, affordable subscription fee.
 
 <div align="center">
-  <img src="before-after.png" alt="Magic Eraser Before and After" width="100%"/>
+  <img src="before-after-v2.png" alt="Magic Eraser Before and After" width="100%"/>
   <p><i>Flawless object removal powered by localized AI, processing in milliseconds.</i></p>
 </div>
 
