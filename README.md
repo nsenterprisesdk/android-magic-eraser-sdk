@@ -37,9 +37,21 @@ The **Magic Eraser SDK** is a premium, 100% on-device Android library that bring
 Integration is incredibly simple. We use JitPack to securely distribute the compiled SDK.
 
 ### Step 1: Add the Repository
-Add JitPack in your root `settings.gradle` or root `build.gradle` at the end of repositories:
+Add the JitPack repository to your build file.
 
-```gradle
+**Gradle (Kotlin DSL - `settings.gradle.kts`)**
+```kotlin
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        mavenCentral()
+        maven("https://jitpack.io")
+    }
+}
+```
+
+**Gradle (Groovy - `settings.gradle`)**
+```groovy
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -49,13 +61,40 @@ dependencyResolutionManagement {
 }
 ```
 
-### Step 2: Add the Dependency
-In your app-level `build.gradle`, add the SDK and sync your project:
+**Maven (`pom.xml`)**
+```xml
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+```
 
-```gradle
+### Step 2: Add the Dependency
+Add the SDK to your app-level dependencies and sync your project.
+
+**Gradle (Kotlin DSL - `build.gradle.kts`)**
+```kotlin
+dependencies {
+    implementation("com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.0.3")
+}
+```
+
+**Gradle (Groovy - `build.gradle`)**
+```groovy
 dependencies {
     implementation 'com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.0.3'
 }
+```
+
+**Maven (`pom.xml`)**
+```xml
+<dependency>
+    <groupId>com.github.nsenterprise9865-stack</groupId>
+    <artifactId>magic-eraser-android-sdk</artifactId>
+    <version>1.0.3</version>
+</dependency>
 ```
 
 ### Step 3: Initialize the SDK
