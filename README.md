@@ -74,6 +74,85 @@ class YourApplication : Application() {
 }
 ```
 
+### Step 4: Launch the Editor
+The SDK provides a built-in, polished UI that takes over when your user selects a photo. You can integrate it using either modern Kotlin or traditional Java.
+
+#### 🔹 Option A: Kotlin (Jetpack Compose)
+If your app uses Compose, use the Android Photo Picker and pass the `Uri` directly into the SDK's `MagicEraserScreen`:
+
+```kotlin
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import com.nsenterprise.magiceraser.sdk.ui.MagicEraserScreen
+
+@Composable
+fun EditFeatureScreen() {
+    var selectedImageUri by remember { mutableStateOf<android.net.Uri?>(null) }
+    
+    // 1. Setup the Android Photo Picker
+    val photoLauncher = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
+        selectedImageUri = uri
+    }
+
+    if (selectedImageUri != null) {
+        // 2. Launch the Magic Eraser Editor
+        MagicEraserScreen(
+            onBack = { selectedImageUri = null }, // Close the editor
+            initialImageUri = selectedImageUri!!,
+            onSaveSuccess = { resultBitmap -> 
+                // The user successfully erased objects! 
+                // Do something with resultBitmap here.
+                selectedImageUri = null
+            }
+        )
+    } else {
+        // 3. Your App's Button to open the gallery
+        Button(onClick = { 
+            photoLauncher.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)) 
+        }) {
+            Text("Select Photo to Edit")
+        }
+    }
+}
+```
+
+#### 🔹 Option B: Java (Traditional XML)
+If you are using Java and traditional XML layouts, you can launch the SDK by starting its dedicated Activity:
+
+```java
+import com.nsenterprise.magiceraser.sdk.MagicEraserActivity;
+
+public class MainActivity extends AppCompatActivity {
+    
+    // 1. Register a launcher to get the edited image back from the SDK
+    private final ActivityResultLauncher<Intent> eraserLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                    Uri editedImageUri = result.getData().getData();
+                    // The user successfully erased objects! Use the editedImageUri.
+                }
+            }
+    );
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        
+        Button editButton = findViewById(R.id.editButton);
+        editButton.setOnClickListener(v -> {
+            // 2. Get a photo from your gallery picker, then pass it to the SDK
+            Uri imageToEdit = /* ... get URI from your own gallery ... */;
+            
+            Intent intent = new Intent(this, MagicEraserActivity.class);
+            intent.putExtra("EXTRA_IMAGE_URI", imageToEdit.toString());
+            eraserLauncher.launch(intent);
+        });
+    }
+}
+```
+
 ---
 
 ## 💰 Get Your License Key
