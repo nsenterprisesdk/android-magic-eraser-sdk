@@ -3,6 +3,7 @@
   <br><br>
   
   <img src="https://img.shields.io/badge/Platform-Android-green?style=for-the-badge&logo=android" alt="Android" />
+  <img src="https://img.shields.io/badge/Language-Kotlin%20%7C%20Java-purple?style=for-the-badge" alt="Language" />
   <img src="https://img.shields.io/badge/AI-On--Device-blue?style=for-the-badge&logo=tensorflow" alt="AI" />
   <img src="https://img.shields.io/badge/Privacy-100%25-success?style=for-the-badge" alt="Privacy" />
   
@@ -17,7 +18,12 @@ Are you currently using cloud APIs like Remove.bg, Photoroom, or ClipDrop to pow
 
 The **Magic Eraser SDK** is a premium, 100% on-device Android library that brings desktop-grade AI erasing to your mobile app for a flat, affordable subscription fee.
 
-### 🌟 Why Developers Choose Magic Eraser SDK:
+<div align="center">
+  <img src="before-after.png" alt="Magic Eraser Before and After" width="100%"/>
+  <p><i>Flawless object removal powered by localized AI, processing in milliseconds.</i></p>
+</div>
+
+### 🌟 Why Top Apps Choose Our SDK:
 1. **Zero Cloud Costs:** Because the AI runs entirely on the user's phone, you pay $0 in server processing fees, regardless of if your users edit 10 images or 10,000 images.
 2. **Absolute Privacy:** User photos never leave the device. This is a massive selling point for privacy-conscious users and enterprise apps.
 3. **Lightning Fast:** No upload or download wait times. Erasing happens instantly.
@@ -25,19 +31,19 @@ The **Magic Eraser SDK** is a premium, 100% on-device Android library that bring
 
 ---
 
-## 🛠️ Features Included
-*   **Smart Subject Masking:** Users can tap objects to instantly select them.
-*   **One-Tap Text Removal:** Automatically detects and erases text from photos.
-*   **Manual Brushing:** Includes undo/redo stacks and dynamic brush sizing.
-*   **Ready-to-Use UI:** A polished Jetpack Compose editor that integrates in under 5 minutes.
+## 💡 Perfect For Your Use Case
+*   **Real Estate Apps:** Remove clutter, people, or cars from property photos instantly.
+*   **E-Commerce:** Clean up product photography and remove background distractions.
+*   **Social Media & Dating:** Let users erase photobombers and exes from their profile pictures.
+*   **Photo Editors:** Add premium "Magic Eraser" functionality to your existing editing suite.
 
 ---
 
-## 📦 How to Integrate
+## 📦 How to Integrate (In 5 Minutes)
 Integration is incredibly simple. We use JitPack to securely distribute the compiled SDK.
 
 ### Step 1: Add the Repository
-Add the JitPack repository to your build file.
+Add the JitPack repository to your root project build file.
 
 **Gradle (Kotlin DSL - `settings.gradle.kts`)**
 ```kotlin
@@ -98,7 +104,7 @@ dependencies {
 ```
 
 ### Step 3: Initialize the SDK
-Before launching the editor, you must initialize the SDK with your License Key.
+Before launching the editor, you must initialize the SDK with your License Key (typically in your `Application` class).
 
 ```kotlin
 import com.nsenterprise.magiceraser.sdk.MagicEraserSDK
