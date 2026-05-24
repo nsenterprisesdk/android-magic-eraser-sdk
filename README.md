@@ -84,7 +84,7 @@ Add the SDK to your app-level dependencies and sync your project.
 ```kotlin
 dependencies {
     // 1. The Magic Eraser SDK
-    implementation("com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.0.4")
+    implementation("com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.0.5")
     
     // 2. Required SDK Dependencies (AI Models & Background Sync)
     implementation("androidx.work:work-runtime-ktx:2.9.0")
@@ -100,7 +100,7 @@ dependencies {
 ```groovy
 dependencies {
     // 1. The Magic Eraser SDK
-    implementation 'com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.0.4'
+    implementation 'com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.0.5'
     
     // 2. Required SDK Dependencies (AI Models & Background Sync)
     implementation 'androidx.work:work-runtime-ktx:2.9.0'
@@ -117,26 +117,45 @@ dependencies {
 <dependency>
     <groupId>com.github.nsenterprise9865-stack</groupId>
     <artifactId>magic-eraser-android-sdk</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
 </dependency>
 <!-- Ensure you also include WorkManager, ML Kit, ONNX, and Firebase dependencies -->
 ```
 
-### Step 3: Initialize the SDK
-Before launching the editor, you must initialize the SDK with your License Key (typically in your `Application` class).
+### Step 3: Initialize the SDK & Download Models
+The SDK requires network initialization to verify your license and fetch the AI model URLs securely. Since `initialize()` is a suspend function, you must call it from a coroutine.
 
+Once initialized successfully, you should start the **Background Model Downloader** so the AI model is ready before the user opens the editor.
+
+**Example (Inside your MainActivity or Application class):**
 ```kotlin
+import androidx.lifecycle.lifecycleScope
 import com.nsenterprise.magiceraser.sdk.MagicEraserSDK
+import com.nsenterprise.magiceraser.sdk.utils.ModelDownloadWorker
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class YourApplication : Application() {
-    override fun onCreate() {
-        super.onCreate()
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         
-        // Initialize the SDK with your unique license key
-        MagicEraserSDK.initialize(this, "YOUR_LICENSE_KEY_HERE")
+        lifecycleScope.launch(Dispatchers.IO) {
+            // 1. Initialize the SDK with your unique license key
+            MagicEraserSDK.initialize(
+                context = applicationContext, 
+                licenseKey = "YOUR_LICENSE_KEY_HERE"
+            )
+            
+            // 2. If the license is valid, start downloading the AI models in the background
+            if (MagicEraserSDK.isReady()) {
+                ModelDownloadWorker.enqueue(applicationContext)
+            }
+        }
     }
 }
 ```
+
+*Note: `ModelDownloadWorker` uses Android's native `WorkManager` to download the models efficiently in the background, even if the user minimizes your app.*
 
 ### Step 4: Launch the Editor
 The SDK provides a built-in, polished UI that takes over when your user selects a photo. You can integrate it using either modern Kotlin or traditional Java.
