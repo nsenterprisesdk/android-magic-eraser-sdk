@@ -83,14 +83,32 @@ Add the SDK to your app-level dependencies and sync your project.
 **Gradle (Kotlin DSL - `build.gradle.kts`)**
 ```kotlin
 dependencies {
-    implementation("com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.0.3")
+    // 1. The Magic Eraser SDK
+    implementation("com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.0.4")
+    
+    // 2. Required SDK Dependencies (AI Models & Background Sync)
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
+    implementation("com.google.android.gms:play-services-mlkit-subject-segmentation:16.0.0-beta1")
+    implementation("com.google.mlkit:text-recognition:16.0.1")
+    implementation("com.microsoft.onnxruntime:onnxruntime-android:1.21.1")
+    implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
+    implementation("com.google.firebase:firebase-firestore")
 }
 ```
 
 **Gradle (Groovy - `build.gradle`)**
 ```groovy
 dependencies {
-    implementation 'com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.0.3'
+    // 1. The Magic Eraser SDK
+    implementation 'com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.0.4'
+    
+    // 2. Required SDK Dependencies (AI Models & Background Sync)
+    implementation 'androidx.work:work-runtime-ktx:2.9.0'
+    implementation 'com.google.android.gms:play-services-mlkit-subject-segmentation:16.0.0-beta1'
+    implementation 'com.google.mlkit:text-recognition:16.0.1'
+    implementation 'com.microsoft.onnxruntime:onnxruntime-android:1.21.1'
+    implementation platform('com.google.firebase:firebase-bom:33.7.0')
+    implementation 'com.google.firebase:firebase-firestore'
 }
 ```
 
@@ -99,8 +117,9 @@ dependencies {
 <dependency>
     <groupId>com.github.nsenterprise9865-stack</groupId>
     <artifactId>magic-eraser-android-sdk</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
 </dependency>
+<!-- Ensure you also include WorkManager, ML Kit, ONNX, and Firebase dependencies -->
 ```
 
 ### Step 3: Initialize the SDK
