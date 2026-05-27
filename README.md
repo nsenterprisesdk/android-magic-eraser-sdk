@@ -84,7 +84,7 @@ Add the SDK to your app-level dependencies and sync your project.
 ```kotlin
 dependencies {
     // 1. The Magic Eraser SDK
-    implementation("com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.0.5")
+    implementation("com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.0.6")
     
     // 2. Required SDK Dependencies (AI Models & Background Sync)
     implementation("androidx.work:work-runtime-ktx:2.9.0")
@@ -100,7 +100,7 @@ dependencies {
 ```groovy
 dependencies {
     // 1. The Magic Eraser SDK
-    implementation 'com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.0.5'
+    implementation 'com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.0.6'
     
     // 2. Required SDK Dependencies (AI Models & Background Sync)
     implementation 'androidx.work:work-runtime-ktx:2.9.0'
@@ -117,7 +117,7 @@ dependencies {
 <dependency>
     <groupId>com.github.nsenterprise9865-stack</groupId>
     <artifactId>magic-eraser-android-sdk</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
 </dependency>
 <!-- Ensure you also include WorkManager, ML Kit, ONNX, and Firebase dependencies -->
 ```
