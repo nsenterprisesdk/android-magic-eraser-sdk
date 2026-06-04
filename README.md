@@ -84,7 +84,7 @@ Add the SDK to your app-level dependencies and sync your project.
 ```kotlin
 dependencies {
     // 1. The Magic Eraser SDK
-    implementation("com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.0.6")
+    implementation("com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.0.7")
     
     // 2. Required SDK Dependencies (AI Models & Background Sync)
     implementation("androidx.work:work-runtime-ktx:2.9.0")
@@ -100,7 +100,7 @@ dependencies {
 ```groovy
 dependencies {
     // 1. The Magic Eraser SDK
-    implementation 'com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.0.6'
+    implementation 'com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.0.7'
     
     // 2. Required SDK Dependencies (AI Models & Background Sync)
     implementation 'androidx.work:work-runtime-ktx:2.9.0'
@@ -117,7 +117,7 @@ dependencies {
 <dependency>
     <groupId>com.github.nsenterprise9865-stack</groupId>
     <artifactId>magic-eraser-android-sdk</artifactId>
-    <version>1.0.6</version>
+    <version>1.0.7</version>
 </dependency>
 <!-- Ensure you also include WorkManager, ML Kit, ONNX, and Firebase dependencies -->
 ```
@@ -235,6 +235,34 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 ```
+
+#### 🔹 Option C: Fully Custom UI (Headless API)
+If you require 100% control over the user interface (e.g. custom layout measurements, your own custom drawing canvas, and branded UI elements), the SDK provides a Headless API via `MagicEraserCore`.
+
+This tier exposes suspending functions for generating selection masks and executing the AI models directly:
+
+```kotlin
+// 1. Ensure Model is ready
+MagicEraserCore.ensureModelReady(context) { progress ->
+    println("Downloading Model: $progress")
+}
+
+// 2. Generate a detection mask (e.g. for highlight preview)
+val maskBmp = MagicEraserCore.buildDetectMask(
+    originalBitmap = imageBmp,
+    touchX = 500f,
+    touchY = 500f,
+    isAccurateMode = true
+)
+
+// 3. Process the image
+val finalImage = MagicEraserCore.applyMask(
+    originalBitmap = imageBmp,
+    maskBitmap = maskBmp,
+    isAccurateMode = true
+)
+```
+*(Please refer to our Sample App's `CustomEditorActivity` for a complete reference on implementing an XML-based custom drawing canvas and tools).*
 
 ---
 
