@@ -84,7 +84,7 @@ Add the SDK to your app-level dependencies and sync your project.
 ```kotlin
 dependencies {
     // 1. The Magic Eraser SDK
-    implementation("com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.0.8")
+    implementation("com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.0.9")
     
     // 2. Required SDK Dependencies (AI Models & Background Sync)
     implementation("androidx.work:work-runtime-ktx:2.9.0")
@@ -100,7 +100,7 @@ dependencies {
 ```groovy
 dependencies {
     // 1. The Magic Eraser SDK
-    implementation 'com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.0.8'
+    implementation 'com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.0.9'
     
     // 2. Required SDK Dependencies (AI Models & Background Sync)
     implementation 'androidx.work:work-runtime-ktx:2.9.0'
@@ -117,7 +117,7 @@ dependencies {
 <dependency>
     <groupId>com.github.nsenterprise9865-stack</groupId>
     <artifactId>magic-eraser-android-sdk</artifactId>
-    <version>1.0.8</version>
+    <version>1.0.9</version>
 </dependency>
 <!-- Ensure you also include WorkManager, ML Kit, ONNX, and Firebase dependencies -->
 ```
@@ -247,23 +247,27 @@ MagicEraserCore.ensureModelReady(context) { progress ->
     println("Downloading Model: $progress")
 }
 
-// 2. Generate a detection mask (e.g. for highlight preview)
-// Note: Mask generation does not depend on the accurateMode flag
-val maskBmp = MagicEraserCore.buildDetectMask(
-    context = context,
-    source = imageBmp,
-    tapX = 500,
-    tapY = 500
-)?.first
+// 2. Pre-warm EdgeSAM when user enters Detect mode (NEW in v1.0.9)
+// This generates embeddings once so every tap is instant AI segmentation
+MagicEraserCore.prepareForDetect(context, imageBmp)
 
-// 3. Process the image
-// accurateMode = true runs the high-quality NS Pro model
-// accurateMode = false runs the NS Fast AI model for instant processing
-val finalImage = MagicEraserCore.applyMask(
+// 3. On user tap — full 3-tier AI detect pipeline runs automatically:
+//    EdgeSAM → MLKit Subject Segmentation → Color Flood-Fill fallback
+val maskPair = MagicEraserCore.buildDetectMask(
     context = context,
-    source = imageBmp,
-    mask = maskBmp!!,
-    accurateMode = false 
+    source  = imageBmp,
+    tapX    = 500,
+    tapY    = 500
+)
+
+// 4. Apply the mask to erase
+// accurateMode = true  → NS Pro (LaMa) — highest quality
+// accurateMode = false → NS Fast AI (MIGAN v2) — instant
+val finalImage = MagicEraserCore.applyMask(
+    context      = context,
+    source       = imageBmp,
+    mask         = maskPair!!.first,
+    accurateMode = true
 )
 ```
 *(Please refer to our Sample App's `CustomEditorActivity` for a complete reference on implementing an XML-based custom drawing canvas, Fast/Pro toggle, and tools).*
