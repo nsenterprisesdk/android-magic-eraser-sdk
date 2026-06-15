@@ -27,7 +27,7 @@ The **Magic Eraser SDK** is a premium, 100% on-device Android library that bring
 1. **Zero Cloud Costs:** Because the AI runs entirely on the user's phone, you pay $0 in server processing fees, regardless of if your users edit 10 images or 10,000 images.
 2. **Absolute Privacy:** User photos never leave the device. This is a massive selling point for privacy-conscious users and enterprise apps.
 3. **Lightning Fast:** No upload or download wait times. Erasing happens instantly.
-4. **State-of-the-Art AI:** Powered by LaMa & MIGAN Inpainting, EdgeSAM for flawless tap-to-select, and ML Kit for automatic text detection.
+4. **State-of-the-Art AI:** Powered by NS Pro & NS Fast AI Inpainting, NS Smart Select for flawless tap-to-select, and ML Kit for automatic text detection.
 
 ---
 
@@ -257,8 +257,8 @@ val maskBmp = MagicEraserCore.buildDetectMask(
 )?.first
 
 // 3. Process the image
-// accurateMode = true runs the high-quality LaMa model (AI Pro)
-// accurateMode = false runs the MIGAN v2 model for instant processing (Fast)
+// accurateMode = true runs the high-quality NS Pro model
+// accurateMode = false runs the NS Fast AI model for instant processing
 val finalImage = MagicEraserCore.applyMask(
     context = context,
     source = imageBmp,
