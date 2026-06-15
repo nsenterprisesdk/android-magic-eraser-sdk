@@ -84,7 +84,7 @@ Add the SDK to your app-level dependencies and sync your project.
 ```kotlin
 dependencies {
     // 1. The Magic Eraser SDK
-    implementation("com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.0.7")
+    implementation("com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.0.8")
     
     // 2. Required SDK Dependencies (AI Models & Background Sync)
     implementation("androidx.work:work-runtime-ktx:2.9.0")
@@ -100,7 +100,7 @@ dependencies {
 ```groovy
 dependencies {
     // 1. The Magic Eraser SDK
-    implementation 'com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.0.7'
+    implementation 'com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.0.8'
     
     // 2. Required SDK Dependencies (AI Models & Background Sync)
     implementation 'androidx.work:work-runtime-ktx:2.9.0'
@@ -117,7 +117,7 @@ dependencies {
 <dependency>
     <groupId>com.github.nsenterprise9865-stack</groupId>
     <artifactId>magic-eraser-android-sdk</artifactId>
-    <version>1.0.7</version>
+    <version>1.0.8</version>
 </dependency>
 <!-- Ensure you also include WorkManager, ML Kit, ONNX, and Firebase dependencies -->
 ```
@@ -248,21 +248,25 @@ MagicEraserCore.ensureModelReady(context) { progress ->
 }
 
 // 2. Generate a detection mask (e.g. for highlight preview)
+// Note: Mask generation does not depend on the accurateMode flag
 val maskBmp = MagicEraserCore.buildDetectMask(
-    originalBitmap = imageBmp,
-    touchX = 500f,
-    touchY = 500f,
-    isAccurateMode = true
-)
+    context = context,
+    source = imageBmp,
+    tapX = 500,
+    tapY = 500
+)?.first
 
 // 3. Process the image
+// accurateMode = true runs the high-quality LaMa model (AI Pro)
+// accurateMode = false runs the MIGAN v2 model for instant processing (Fast)
 val finalImage = MagicEraserCore.applyMask(
-    originalBitmap = imageBmp,
-    maskBitmap = maskBmp,
-    isAccurateMode = true
+    context = context,
+    source = imageBmp,
+    mask = maskBmp!!,
+    accurateMode = false 
 )
 ```
-*(Please refer to our Sample App's `CustomEditorActivity` for a complete reference on implementing an XML-based custom drawing canvas and tools).*
+*(Please refer to our Sample App's `CustomEditorActivity` for a complete reference on implementing an XML-based custom drawing canvas, Fast/Pro toggle, and tools).*
 
 ---
 
