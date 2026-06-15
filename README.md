@@ -27,7 +27,7 @@ The **Magic Eraser SDK** is a premium, 100% on-device Android library that bring
 1. **Zero Cloud Costs:** Because the AI runs entirely on the user's phone, you pay $0 in server processing fees, regardless of if your users edit 10 images or 10,000 images.
 2. **Absolute Privacy:** User photos never leave the device. This is a massive selling point for privacy-conscious users and enterprise apps.
 3. **Lightning Fast:** No upload or download wait times. Erasing happens instantly.
-4. **State-of-the-Art AI:** Powered by LaMa Inpainting and ML Kit for flawless subject selection, object removal, and automatic text detection/erasing.
+4. **State-of-the-Art AI:** Powered by LaMa & MIGAN Inpainting, EdgeSAM for flawless tap-to-select, and ML Kit for automatic text detection.
 
 ---
 
