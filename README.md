@@ -28,6 +28,7 @@ The **Magic Eraser SDK** is a premium, 100% on-device Android library that bring
 2. **Absolute Privacy:** User photos never leave the device. This is a massive selling point for privacy-conscious users and enterprise apps.
 3. **Lightning Fast:** No upload or download wait times. Erasing happens instantly.
 4. **State-of-the-Art AI:** Powered by NS Pro & NS Fast AI Inpainting, NS Smart Select for flawless tap-to-select, and ML Kit for automatic text detection.
+5. **Fully Customizable UI:** Easily toggle premium badges (like PRO tags), change colors, and edit labels directly in the SDK config, or build a 100% custom headless UI.
 
 ---
 
@@ -84,7 +85,7 @@ Add the SDK to your app-level dependencies and sync your project.
 ```kotlin
 dependencies {
     // 1. The Magic Eraser SDK
-    implementation("com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.0.9")
+    implementation("com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.1.0")
     
     // 2. Required SDK Dependencies (AI Models & Background Sync)
     implementation("androidx.work:work-runtime-ktx:2.9.0")
@@ -100,7 +101,7 @@ dependencies {
 ```groovy
 dependencies {
     // 1. The Magic Eraser SDK
-    implementation 'com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.0.9'
+    implementation 'com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.1.0'
     
     // 2. Required SDK Dependencies (AI Models & Background Sync)
     implementation 'androidx.work:work-runtime-ktx:2.9.0'
@@ -117,7 +118,7 @@ dependencies {
 <dependency>
     <groupId>com.github.nsenterprise9865-stack</groupId>
     <artifactId>magic-eraser-android-sdk</artifactId>
-    <version>1.0.9</version>
+    <version>1.1.0</version>
 </dependency>
 <!-- Ensure you also include WorkManager, ML Kit, ONNX, and Firebase dependencies -->
 ```
@@ -247,7 +248,7 @@ MagicEraserCore.ensureModelReady(context) { progress ->
     println("Downloading Model: $progress")
 }
 
-// 2. Pre-warm EdgeSAM when user enters Detect mode (NEW in v1.0.9)
+// 2. Pre-warm EdgeSAM when user enters Detect mode (NEW in v1.1.0)
 // This generates embeddings once so every tap is instant AI segmentation
 MagicEraserCore.prepareForDetect(context, imageBmp)
 
