@@ -422,11 +422,42 @@ The SDK's **multi-tier AI engine automatically adapts** — delivering the best 
 
 ---
 
-## 💰 Get Your License Key
-Our flat-rate plans start at just **$19/month** (which saves developers thousands of dollars compared to cloud APIs). 
+## 💳 Pricing & Licensing
 
-To purchase a license key, or to inquire about Enterprise white-label packages, contact us directly:
-✉️ **contact.nsenterprise@gmail.com**
+Flat-rate commercial licenses designed to grow with your business.
+
+<div align="center">
+
+| | 🌱 **Pro License** | 🏢 **Unlimited License** |
+|---|:---:|:---:|
+| **Users** | 1 - 10,000 | 10,000+ |
+| **Price** | **$19 / month** | **$49 / month** |
+| **Erasures** | Unlimited | Unlimited |
+| **Support** | Standard email | Priority support |
+| | [**Get Pro →**](mailto:hello@nsenterprise.dev?subject=Pro%20License%20Request) | [**Get Unlimited →**](mailto:hello@nsenterprise.dev?subject=Unlimited%20License%20Request) |
+
+</div>
+
+<br/>
+
+### 🌍 Global Enterprise Licensing (Payment & Fulfillment)
+
+To initiate a commercial software license agreement, please contact our Enterprise Licensing Desk at **[hello@nsenterprise.dev](mailto:hello@nsenterprise.dev)** specifying your desired tier and organization details. 
+
+We process all global B2B transactions via the following secure networks:
+- **🏦 USD ACH Transfer / Swift:** We will issue a formal corporate invoice for direct routing to our JP Morgan Chase NA corporate account.
+- **🪙 Enterprise Crypto Settlement:** For instant, borderless fulfillment, we accept USDT/USDC via major blockchain networks. 
+
+*Upon payment verification, our licensing team will instantly provision your production API Keys and dispatch your official tax-compliant receipt.*
+
+---
+
+### 🇧🇩 Bangladesh Purchase (bKash)
+
+1. Send the payment to **`01904891242`**.
+2. Transfer the BDT equivalent of your license price at the current market rate.
+3. Include your **email address** in the bKash reference field.
+4. Email your Transaction ID to activate instantly.
 
 ---
 *Brought to you by NS Enterprise.*
