@@ -118,7 +118,7 @@ dependencies {
 <dependency>
     <groupId>com.github.nsenterprise9865-stack</groupId>
     <artifactId>magic-eraser-android-sdk</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
 </dependency>
 <!-- Ensure you also include WorkManager, ML Kit, ONNX, and Firebase dependencies -->
 ```
@@ -248,7 +248,7 @@ MagicEraserCore.ensureModelReady(context) { progress ->
     println("Downloading Model: $progress")
 }
 
-// 2. Pre-warm EdgeSAM when user enters Detect mode (NEW in v1.1.0)
+// 2. Pre-warm EdgeSAM when user enters Detect mode (NEW in v1.1.1)
 // This generates embeddings once so every tap is instant AI segmentation
 MagicEraserCore.prepareForDetect(context, imageBmp)
 
