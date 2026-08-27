@@ -1,0 +1,22 @@
+PROPRIETARY SOFTWARE LICENSE AGREEMENT
+
+Copyright (c) 2026 NS Enterprise. All rights reserved.
+
+1. PERMITTED USE
+This software and associated AI models are the proprietary property of NS Enterprise. You are granted a limited, non-exclusive, non-transferable license to integrate and use this software strictly in accordance with your active subscription and API tier. 
+
+2. PROHIBITION ON REVERSE ENGINEERING AND EXTRACTION
+Licensee shall not, and shall not permit any third party to:
+(a) copy, modify, decompile, disassemble, decrypt, or reverse engineer the Software;
+(b) attempt to derive the source code, underlying structure, ideas, or algorithms of the Software;
+(c) bypass, disable, or circumvent any technical protection measures, including Digital Rights Management (DRM), encryption, or licensing mechanisms embedded within the Software;
+(d) extract, scrape, or automate the collection of data, product behavior, or embedded AI models (including but not limited to ONNX or TFLite files) from the Software;
+(e) reconstruct or discover any underlying technology through any means.
+
+Any attempt to circumvent these protections shall be considered a material breach of this Agreement.
+
+3. OWNERSHIP
+NS Enterprise retains all right, title, and interest in and to the Software, including all intellectual property rights therein.
+
+4. TERMINATION
+This license is effective until terminated. Your rights under this license will terminate automatically without notice from NS Enterprise if you fail to comply with any of these terms, or if your subscription expires. Upon termination, you must cease all use of the software and destroy all copies.
