@@ -9,6 +9,10 @@
   
   <h1>🪄 Magic Eraser Android SDK</h1>
   <p><b>The ultimate fully offline, on-device AI object and text removal tool for Android applications.</b></p>
+  
+  <br>
+  <a href="mailto:support@nsenterprise.dev?subject=Requesting%207-Day%20Test%20License&body=Hi%2C%20I%20would%20like%20to%20request%20a%207-day%20test%20license%20for%20the%20SDK."><img src="https://img.shields.io/badge/Get%207--Day%20Test%20License-Get%20Now-FF9900?style=for-the-badge&logo=minutemailer" alt="Get Test License" /></a>
+  <a href="https://nsenterprise.dev/download-demo.html"><img src="https://img.shields.io/badge/Download%20Demo%20APK-Test%20Now-00ADD8?style=for-the-badge&logo=android" alt="Download Demo APK" /></a>
 </div>
 
 ---
@@ -85,7 +89,7 @@ Add the SDK to your app-level dependencies and sync your project.
 ```kotlin
 dependencies {
     // 1. The Magic Eraser SDK
-    implementation("com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.1.0")
+    implementation("com.github.nsenterprise9865-stack:magic-eraser-android-sdk:1.1.1")
     
     // 2. Required SDK Dependencies (AI Models & Background Sync)
     implementation("androidx.work:work-runtime-ktx:2.9.0")
@@ -454,10 +458,7 @@ We process all global B2B transactions via the following secure networks:
 
 ### 🇧🇩 Bangladesh Purchase (bKash)
 
-1. Send the payment to **`01904891242`**.
-2. Transfer the BDT equivalent of your license price at the current market rate.
-3. Include your **email address** in the bKash reference field.
-4. Email your Transaction ID to activate instantly.
+Users from Bangladesh can pay by bKash. Please contact us for bKash details at support@nsenterprise.dev.
 
 ---
 *Brought to you by NS Enterprise.*
